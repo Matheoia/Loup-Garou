@@ -1,0 +1,23 @@
+#roles {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+}
+
+.carte {
+    margin: 4px;
+    border: solid black 5px;
+    border-radius: 5%;
+}
+
+#description {
+    position: absolute;
+    top: 30%;
+    left: 60%;
+    border: solid black 2px;
+
+}

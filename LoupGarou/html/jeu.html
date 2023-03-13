@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/Loup-Garou.png"/>
+    <title>Loups-Garous</title>
+    <link rel="stylesheet" href="../css/jeu.css">
+  <script src="../js/jeu.js"></script>
+</head>
+<body>
+
+    <button id="startBtn">Lancer le timer</button>
+    <div id="timer"></div>
+
+    <button id="suite">Passer à la suite</button>
+    <p id="suiviScenario">Au tour de : <label id="txtScenario"></label></p>
+
+    <div id="joueurs">
+        <div class="joueur" id="j1"><img class="man" src="../img/man/black.png"><p class="nomJoueur">joueur1</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j2"><img class="man" src="../img/man/blue.png"><p class="nomJoueur">joueur2</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j3"><img class="man" src="../img/man/gray.png"><p class="nomJoueur">joueur3</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j4"><img class="man" src="../img/man/green.png"><p class="nomJoueur">joueur4</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j5"><img class="man" src="../img/man/marron.png"><p class="nomJoueur">joueur5</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j6"><img class="man" src="../img/man/pink.png"><p class="nomJoueur">joueur6</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j7"><img class="man" src="../img/man/red.png"><p class="nomJoueur">joueur7</p><img class="carte_dos" src="../img/dos.png"></div>
+        <div class="joueur" id="j8"><img class="man" src="../img/man/yellow.png"><p class="nomJoueur">joueur8</p><img class="carte_dos" src="../img/dos.png"></div>
+    </div>
+
+    <div id="revelation">
+        <p id="txtMort">Voici qui est mort pendant la Nuit : <label id="joueurMortNuit"></label></p>
+        <p>il ou elle était <label id="roleMortNuit"></label></p>
+    </div>
+
+    <div id="revelationSorciere">
+        <p id="txtMortSorciere">Voici celui ou celle qui va mourir : <label id="joueurMortSorciere"></label></p>
+    </div>
+
+    <div id="pouvoirSorciere">
+        <p>La sorciere a décidé de sauver <label id="joueurSauveSorciere"></label></p>
+        <p>La sorciere a décidé de tuer <label id="joueurTueSorciere"></label></p>
+    </div>
+
+    <div id="pouvoirSalvateur">
+        <p>Le salvateur a décidé de garder <label id="joueurGardeSalvateur"></label></p>
+    </div>
+
+    <div id="elimination">
+        <p id="texte_elimin">Voulez-vous vraiment éliminer <strong><label id="label_elimin"></label></strong> ?</p>
+        <button id="annule_elimin">ANNULER</button>
+        <button id="confirm_elimin">CONFIRMER</button>
+    </div>
+
+    
+    
+
+    </div>
+    
+</body>
+</html>

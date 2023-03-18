@@ -1,13 +1,30 @@
-html, body {
-    background-color: black;
-}
+/* html, body {
+    background-color: black; 
+} */
 
 body {
     display: grid;
     grid-template-columns: 25% 1fr;
     grid-template-rows: 10% 1fr 50%;
     place-items: center;
+
+    background-image: url('../img/jour.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
+
+/* 
+#fond {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../img/jour.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+} */
 
 #joueurs {
     grid-column: 2;
@@ -26,9 +43,8 @@ body {
 
     margin: 2px;
     padding: 5px;
-    border: solid black 1px;
-
-    background-color: antiquewhite;
+    border: solid black 2px;
+    background-color: transparent;
 }
 
 .man {
@@ -40,6 +56,7 @@ body {
     position: relative;
     top: 20%;
     left: 30%;
+    color: white;
     
 }
 
@@ -158,4 +175,12 @@ body {
     grid-row: 3;
     grid-column: 1;
 
+}
+
+.selectedGentil {
+    border: 2px solid green;
+}
+
+.selectedMechant {
+    border: 2px solid red;
 }

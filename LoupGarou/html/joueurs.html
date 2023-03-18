@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loup-Garou</title>
+        <!-- <link rel="stylesheet" href="../css/web.css"> -->
+        <!-- <link rel="icon" href="../images/icone.svg"> -->
+        <meta name="description" content="Bienvenue dans le jeu du Loup-Garou !" charset="UTF-8">
+    </head>
+    <!-- <body background="fond_etoile.jpg"> -->
+        <header class="degrade-horizontal" style="text-align:center; width:100%">
+              <p>Loup-Garou de Thiercelieux</p>
+        </header>
+        <div id="accueil" style="text-align:center; width:100%">           
+              <form method="post" id="formulaire">
+                <p><label>Nombre de joueurs : <select name="select" id = 'nb_joueur' size="1">  
+                  <option value="8">8</option>
+                  <!-- <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>                  -->
+              </select></p>
+              </form>           
+          </div>
+          <div id="accueil" style="text-align:center; width:100%">           
+              <form action="jeu.html" method="post" id="joueurs">
+                <p>Nom des joueurs : </p>
+                <ol id = 'noms'></ol>             
+                <p><input type="submit" name="valider" value="JOUER" id = 'submit' onclick="window.location.href = 'jeu.html'"></p>
+              </form>      
+          </div>
+          <div id = 'nb_joueur'></div>
+          <script src="../js/joueurs.js" charset="utf-8"></script>
+    </body>
+</html>

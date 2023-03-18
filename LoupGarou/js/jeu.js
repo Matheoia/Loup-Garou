@@ -31,40 +31,59 @@ document.addEventListener("DOMContentLoaded", function() {
     //CUPIDON
     var couple = [];
 
+    //FOND
+    var fond = document.getElementById('fond');
+    var body = document.querySelector('body');
+
     //TABLEAU DES VIVANTS 
     var tableauJoueurs = [
-      { id: "j1", vivant: true },
-      { id: "j2", vivant: true },
-      { id: "j3", vivant: true },
-      { id: "j4", vivant: true },
-      { id: "j5", vivant: true },
-      { id: "j6", vivant: true },
-      { id: "j7", vivant: true },
-      { id: "j8", vivant: true }
+      { id: "j1", vivant: true, role: "" },
+      { id: "j2", vivant: true, role: "" },
+      { id: "j3", vivant: true, role: "" },
+      { id: "j4", vivant: true, role: "" },
+      { id: "j5", vivant: true, role: "" },
+      { id: "j6", vivant: true, role: "" },
+      { id: "j7", vivant: true, role: "" },
+      { id: "j8", vivant: true, role: "" }
     ];
     
-    /*
-    var listRoles = [];   
-    fetch('../php/cartes.php') 
-    .then(r => r.json())
-    .then(r => {
-      r.forEach(element => {
-        for (let i = 0; i < tableauJoueurs.length; i++) {
-          if(tableauJoueurs[i].id == element.id) {
-            tableauJoueurs[i].role = element['role'];
-            listRoles.push(element['role']);
-          }
-        }
-      })
-    });*/
+      //MODIFICATION DES NOMS
+    for (var i = 1; i <= sessionStorage.getItem('nb_joueur'); i++) {
+      document.getElementById('j' + i).querySelector('.nomJoueur').textContent = sessionStorage.getItem('joueur' + i);
+    }
+    
+    
+    var listRoles = ['Loup-Garou', 'Loup-Garou', 'Petite_Fille', 'Chasseur', 'Sorciere', 'Cupidon', 'Salvateur', 'Voyante'];
+    var nbrJoueurs = listRoles.length;
+    var attrib = melangeRoles(nbrJoueurs);
+    for (i = 0; i < nbrJoueurs; i++) {
+      tableauJoueurs[i].role = listRoles[attrib[i]];
+    }
+
+    function melangeRoles(nbrJoueurs) {
+      let tab = [];
+      for (i = 0; i < nbrJoueurs; i++) {
+        tab.push(i);
+      }
+      for (var i = tab.length -1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i+1));
+        [tab[i], tab[j]] = [tab[j], tab[i]];
+      }
+      return tab
+    }
+
 
     btnSuite.addEventListener('click', e=> {
       //console.log(tableauJoueurs);
       defileScenario(compteur);
-      if(compteur <=5) {
+      if(compteur <=21) {
         compteur +=1;
       } else {
-        compteur = 2;
+        compteur = 17;
+      }
+      for(var i = 0; i<joueurs.length; i++) {
+        joueurs[i].classList.remove("selectedGentil");
+        joueurs[i].classList.remove("selectedMechant");
       }
     });
     
@@ -78,8 +97,78 @@ document.addEventListener("DOMContentLoaded", function() {
           if(compteur == element.id) {
             txtScenario.innerHTML = element['role'];
 
+            //REVEAL J1
+            if(element['role'] == "reveal_j1") {
+              joueurs[0].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[0].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[0].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J2
+            if(element['role'] == "reveal_j2") {
+              joueurs[1].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[1].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[1].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J3
+            if(element['role'] == "reveal_j3") {
+              joueurs[2].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[2].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[2].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J4
+            if(element['role'] == "reveal_j4") {
+              joueurs[3].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[3].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[3].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J5
+            if(element['role'] == "reveal_j5") {
+              joueurs[4].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[4].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[4].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J6
+            if(element['role'] == "reveal_j6") {
+              joueurs[5].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[5].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[5].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J7
+            if(element['role'] == "reveal_j7") {
+              joueurs[6].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[6].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[6].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //REVEAL J8
+            if(element['role'] == "reveal_j8") {
+              joueurs[7].querySelector('.carte_dos').src = "../img/" + tableauJoueurs[7].role + ".png";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            } else {
+              joueurs[7].querySelector('.carte_dos').src = "../img/dos.png";
+            }
+
+            //NEUTRE 
+            if(element['role'] == "neutre") {
+              body.style.backgroundImage = "url('../img/jour.jpg')";
+            }
+
             //CUPIDON
             if(txtScenario.innerHTML == 'Cupidon') {
+              body.style.backgroundImage = "url('../img/nuit.jpg')";
               for (let i = 0; i < joueurs.length; i++) {
                 joueurs[i].addEventListener('click', nuitCupidon);
               }
@@ -91,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             //SALVATEUR
             if(txtScenario.innerHTML == 'Salvateur') {
+              body.style.backgroundImage = "url('../img/nuit.jpg')";
               for (let i = 0; i < joueurs.length; i++) {
                 joueurs[i].addEventListener('click', nuitSalvateur);
               }
@@ -102,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             //VOYANTE
             if(txtScenario.innerHTML == 'Voyante') {
+              body.style.backgroundImage = "url('../img/nuit.jpg')";
               for (let i = 0; i < joueurs.length; i++) {
                 joueurs[i].addEventListener('click', nuitVoyante);
               }
@@ -113,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             //LGS
             if(txtScenario.innerHTML == 'Loup-Garou') {
+              body.style.backgroundImage = "url('../img/nuit.jpg')";
               for (let i = 0; i < tableauJoueurs.length; i++) {
                 if(tableauJoueurs[i].vivant) {
                   joueurs[i].querySelector('.carte_dos').src = '../img/dos.png';
@@ -129,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //SORCIERE
             if(txtScenario.innerHTML == 'Sorciere') {
               revelationSorciere.style.visibility = "visible";
+              body.style.backgroundImage = "url('../img/nuit.jpg')";
               for (let i = 0; i < joueurs.length; i++) {
                 joueurs[i].addEventListener('click', nuitSorciere);
               }
@@ -142,19 +235,14 @@ document.addEventListener("DOMContentLoaded", function() {
             //VOTE DU JOUR
             if(txtScenario.innerHTML == 'Vote du jour') {
               //revelation.style.visibility = "visible";
+              body.style.backgroundImage = "url('../img/jour.jpg')";
               revelationSorciere.style.visibility = "hidden";
-              console.log(couple);
-
-              fetch('../php/cartes.php')
-              .then(r => r.json())
-              .then(r => {
-                for (let i = 0; i < tableauJoueurs.length; i++) {
-                  if(!tableauJoueurs[i].vivant) {
-                    joueurs[i].style.opacity = "0.5";
-                    joueurs[i].querySelector('.carte_dos').src = "../img/" + r[i]['role'] + ".png";
-                  }
+              for (let i = 0; i < tableauJoueurs.length; i++) {
+                if(!tableauJoueurs[i].vivant) {
+                  joueurs[i].style.opacity = "0.5";
+                  joueurs[i].querySelector('.carte_dos').src = '../img/' + tableauJoueurs[i].role + '.png';
                 }
-              })
+              }
               for (let i = 0; i < joueurs.length; i++) {
                 joueurs[i].addEventListener('click', VoteLeJour);
               }
@@ -172,23 +260,37 @@ document.addEventListener("DOMContentLoaded", function() {
     function nuitCupidon() {
       joueurSelectionne = this;
       couple.push(joueurSelectionne);
+      for(var i = 0; i<joueurs.length; i++) {
+        joueurs[i].classList.remove("selectedGentil");
+      }
+      this.classList.add("selectedGentil");
+      
     }
 
     function nuitSalvateur() {
       joueurSelectionne = this;
       joueurGardeSalvateur.innerHTML = joueurSelectionne.querySelector('.nomJoueur').textContent;
-    }
+
+      for(var i = 0; i<joueurs.length; i++) {
+        joueurs[i].classList.remove("selectedGentil");
+      }
+      this.classList.add("selectedGentil");
+      }
 
     function nuitSorciere() {
 
       joueurSelectionne = this;
-
+      for(var i = 0; i<joueurs.length; i++) {
+        joueurs[i].classList.remove("selectedMechant");
+      }
+      
       if(compteurPotionVie < 1) {
         if(joueurSelectionne.querySelector('.nomJoueur').textContent == joueurMortSorciere.innerHTML) {
           console.log("sorciere sauve");
           for (let i = 0; i < joueurs.length; i++) {
             if(joueurSelectionne.id == tableauJoueurs[i].id) {
               tableauJoueurs[i].vivant = true;
+              this.classList.add("selectedGentil")
             }
           }
           joueurSauveSorciere.innerHTML = joueurMortSorciere.innerHTML;
@@ -205,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function() {
           for (let i = 0; i < tableauJoueurs.length; i++) {
             if(joueurSelectionne.id == tableauJoueurs[i].id) {
               tableauJoueurs[i].vivant = false;
+              this.classList.add("selectedMechant");
             }
           }
           compteurPotionMort += 1;
@@ -215,45 +318,58 @@ document.addEventListener("DOMContentLoaded", function() {
     function  nuitVoyante() {
 
       joueurSelectionne = this;
-      fetch('../php/cartes.php')
-      .then(r => r.json())
-      .then(r => {
-        r.forEach(element => {
-          if(element['nom'] == joueurSelectionne.querySelector('.nomJoueur').textContent) {
-            joueurSelectionne.querySelector('.carte_dos').src = '../img/' + element['role'] + '.png';
-          }
-        })
-      })
+      for(var i = 0; i<tableauJoueurs.length; i++) {
+        if(tableauJoueurs[i].id == joueurSelectionne.id) {
+          joueurSelectionne.querySelector('.carte_dos').src = '../img/' + tableauJoueurs[i].role + '.png';
+        }
+      }
     };
 
     function nuitLoups() {
       joueurSelectionne = this;
-      fetch('../php/cartes.php')
-      .then(r => r.json())
-      .then(r => {
+      for(var i = 0; i<joueurs.length; i++) {
+        joueurs[i].classList.remove("selectedMechant");
+      }
+      this.classList.add("selectedMechant");
 
-        r.forEach(element => {
-          if(element['nom'] == joueurSelectionne.querySelector('.nomJoueur').textContent) {
-            if(element['nom'] != joueurGardeSalvateur.innerHTML) {
-              console.log('non');
-              for (let i = 0; i < tableauJoueurs.length; i++) {
-                if(element.id == tableauJoueurs[i].id) {
-                  tableauJoueurs[i].vivant = false;
-                }
-              }
-              //joueurMortNuit.innerHTML = element['nom'];
-              //roleMortNuit.innerHTML = element['role'];
-              joueurMortSorciere.innerHTML = element['nom'];
-            } else {
-              console.log('oui');
-              //joueurMortNuit.innerHTML = "Personne";
-              //roleMortNuit.innerHTML = "..."
-              joueurMortSorciere.innerHTML = element['nom'];
-            }
-            
+      if(joueurSelectionne.querySelector('.nomJoueur').innerHTML != joueurGardeSalvateur.innerHTML) {
+        for (let i = 0; i < tableauJoueurs.length; i++) {
+          if(joueurSelectionne.id == tableauJoueurs[i].id) {
+            tableauJoueurs[i].vivant = false;
           }
-        })
-      })
+        }
+      } 
+      joueurMortSorciere.innerHTML = joueurSelectionne.querySelector('.nomJoueur').textContent;
+      
+      // fetch('../php/cartes.php')
+      // .then(r => r.json())
+      // .then(r => {
+
+      //   r.forEach(element => {
+      //     if(element['nom'] == joueurSelectionne.querySelector('.nomJoueur').textContent) {
+      //       if(element['nom'] != joueurGardeSalvateur.innerHTML) {
+      //         //console.log('non');
+      //         for (let i = 0; i < tableauJoueurs.length; i++) {
+      //           if(element.id == tableauJoueurs[i].id) {
+      //             tableauJoueurs[i].vivant = false;
+      //           }
+      //         }
+      //         console.log(joueurMortSorciere);
+      //         //joueurMortNuit.innerHTML = element['nom'];
+      //         //roleMortNuit.innerHTML = element['role'];
+      //         joueurMortSorciere.innerHTML = joueurSelectionne.querySelector('.nomJoueur').textContent;
+      //         console.log(joueurMortSorciere);
+      //       } else {
+      //         //console.log('oui');
+      //         //joueurMortNuit.innerHTML = "Personne";
+      //         //roleMortNuit.innerHTML = "..."
+      //         joueurMortSorciere.innerHTML = joueurSelectionne.querySelector('.nomJoueur').textContent;
+      //       }
+            
+      //     }
+      //   })
+      // }
+      // )
     };
 
     function VoteLeJour() {
@@ -276,29 +392,17 @@ document.addEventListener("DOMContentLoaded", function() {
         elimination.style.visibility = 'hidden';
         joueurSelectionne.style.opacity = "0.5";
 
-        fetch('../php/cartes.php')
-        .then(r => r.json())
-        .then(r => {
-          r.forEach(element => {
-            if(element['nom'] == joueurSelectionne.querySelector('.nomJoueur').textContent) {
-              joueurSelectionne.querySelector('.carte_dos').src = '../img/' + element['role'] + '.png';
-              for (let i = 0; i < tableauJoueurs.length; i++) {
-                if(joueurSelectionne.id == tableauJoueurs[i].id) {
-                  tableauJoueurs[i].vivant = false;
-                }
-              }
-            }
-          })
-        })
+        for (let i = 0; i < tableauJoueurs.length; i++) {
+          if(joueurSelectionne.id == tableauJoueurs[i].id) {
+            tableauJoueurs[i].vivant = false;
+            joueurSelectionne.querySelector('.carte_dos').src = '../img/' + tableauJoueurs[i].role + '.png';
+        
+          }
+        }
         annuleElim.removeEventListener('click', annulerElimination);
         confirmElim.removeEventListener('click', confirmerElimination);
         }
     }
-
-
-
-
-
 
     var timer;
     var timerDisplay = document.getElementById("timer");
